@@ -159,13 +159,13 @@ namespace PaintNight
             item.BorderThickness = new Thickness(0, 0, 0, 1);
             item.BorderBrush = (SolidColorBrush) (new BrushConverter().ConvertFrom("#FF707FCD"));
 
-                // Finally, add the item to the list view item collection
-                ic.Add(item);
+            // Finally, add the item to the list view item collection
+            ic.Add(item);
 
-                // Add the new item to the character list
-                Characters.Add(txtBxAdd.Text);
+            // Add the new item to the character list
+            Characters.Add(txtBxAdd.Text);
 
-                //TODO: Add "Character Addition Confirmation" window
+            //TODO: Add "Character Addition Confirmation" window
         }
 
         // This function is for pressing enter inside the textbox
