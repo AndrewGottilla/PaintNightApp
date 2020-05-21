@@ -146,35 +146,7 @@ namespace PaintNight
                 lblChar.Content = lbi.Content.ToString();
         }
 
-        // This function is for pressing enter inside the textbox
-        // TODO: Converge the two functions somehow? Maybe throw def. into function
-        private void eventAddChar(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                // TODO: Implement confirmation window
-
-                // Get the list view item collection
-                ItemCollection ic = lstVwChar.Items;
-
-                // Create the new item
-                ListViewItem item = new ListViewItem();
-                item.Content = txtBxAdd.Text;
-                item.BorderThickness = new Thickness(0, 0, 0, 1);
-                item.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF707FCD"));
-
-                // Finally, add the item to the list view item collection
-                ic.Add(item);
-
-                // Add the new item to the character list
-                Characters.Add(txtBxAdd.Text);
-
-                //TODO: Add "Character Addition Confirmation" window
-            }
-        }
-
-        // TODO: Implement event for txtBxAdd when hitting Enter \ Rename this event
-        private void eventAddChar(object sender, RoutedEventArgs e)
+        private void addChar()
         {
             // TODO: Implement confirmation window
 
@@ -185,15 +157,28 @@ namespace PaintNight
             ListViewItem item = new ListViewItem();
             item.Content = txtBxAdd.Text;
             item.BorderThickness = new Thickness(0, 0, 0, 1);
-            item.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF707FCD"));
+            item.BorderBrush = (SolidColorBrush) (new BrushConverter().ConvertFrom("#FF707FCD"));
 
-            // Finally, add the item to the list view item collection
-            ic.Add(item);
+                // Finally, add the item to the list view item collection
+                ic.Add(item);
 
-            // Add the new item to the character list
-            Characters.Add(txtBxAdd.Text);
+                // Add the new item to the character list
+                Characters.Add(txtBxAdd.Text);
 
-            //TODO: Add "Character Addition Confirmation" window
+                //TODO: Add "Character Addition Confirmation" window
+        }
+
+        // This function is for pressing enter inside the textbox
+        private void eventAddChar(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+                addChar();
+        }
+
+        // TODO: Implement event for txtBxAdd when hitting Enter \ Rename this event
+        private void eventAddChar(object sender, RoutedEventArgs e)
+        {
+            addChar();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
