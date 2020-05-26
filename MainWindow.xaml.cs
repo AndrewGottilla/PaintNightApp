@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.CompilerServices;
 
 namespace PaintNight
 {
@@ -131,7 +132,6 @@ namespace PaintNight
 
         private void actionExit(object sender, RoutedEventArgs e)
         {
-            //TODO: Ask to save before closing?
             Application.Current.Shutdown();
         }
 
@@ -139,7 +139,7 @@ namespace PaintNight
         {
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
             
-            // check if null for the case that ListBox is reloaded/unhighlighted
+            // check if null for the case that ListBoxItem is reloaded/unhighlighted
             if (lbi == null)
                 lblChar.Content = " - - - ";
             else
@@ -148,24 +148,34 @@ namespace PaintNight
 
         private void addChar()
         {
-            // TODO: Implement confirmation window
+            // Get name of input character
+            String newChar = txtBxAdd.Text;
 
-            // Get the list view item collection
-            ItemCollection ic = lstVwChar.Items;
+            // Check that input character is not blank
+            if (!String.IsNullOrEmpty(newChar))
+            {
+                MessageBoxResult mbr = System.Windows.MessageBox.Show("Are you sure you want to add: \"" + newChar + "\"?", "Character Addition", System.Windows.MessageBoxButton.YesNo);
+                if (mbr == MessageBoxResult.Yes)
+                {                     
+                    // Get the list view item collection
+                    ItemCollection ic = lstVwChar.Items;
 
-            // Create the new item
-            ListViewItem item = new ListViewItem();
-            item.Content = txtBxAdd.Text;
-            item.BorderThickness = new Thickness(0, 0, 0, 1);
-            item.BorderBrush = (SolidColorBrush) (new BrushConverter().ConvertFrom("#FF707FCD"));
+                    // Create the new item
+                    ListViewItem newCharItem = new ListViewItem();
+                    newCharItem.Content = txtBxAdd.Text;
+                    newCharItem.BorderThickness = new Thickness(0, 0, 0, 1);
+                    newCharItem.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF707FCD"));
 
-            // Finally, add the item to the list view item collection
-            ic.Add(item);
+                    // Finally, add the item to the list view item collection
+                    ic.Add(newCharItem);
 
-            // Add the new item to the character list
-            Characters.Add(txtBxAdd.Text);
+                    // Add the new item to the character list
+                    Characters.Add(newChar);
+                }
+            }
 
-            //TODO: Add "Character Addition Confirmation" window
+            // Clear the TextBox
+            txtBxAdd.Text = "";
         }
 
         // This function is for pressing enter inside the textbox
@@ -175,7 +185,7 @@ namespace PaintNight
                 addChar();
         }
 
-        // TODO: Implement event for txtBxAdd when hitting Enter \ Rename this event
+        // This function gets called when you click the add button
         private void eventAddChar(object sender, RoutedEventArgs e)
         {
             addChar();
@@ -183,11 +193,21 @@ namespace PaintNight
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Finish delete definition
-            // Open small window asking if you're sure you want to delete "LIST ITEM"
-            // If nothing is selected, send simple error message and don't run remova
-            Characters.RemoveAt(lstVwChar.SelectedIndex);
-            lstVwChar.Items.Remove(lstVwChar.SelectedItem);
+            // Grab Item selected in list
+            ListBoxItem lbi = ((lstVwChar).SelectedItem as ListBoxItem);
+
+            if (lbi != null)
+            {
+                // Get name of selected character
+                String SelectedCharacter = lbi.Content.ToString();
+
+                MessageBoxResult mbr = System.Windows.MessageBox.Show("Are you sure you want to delete: \"" + SelectedCharacter + "\"?", "Character Deletion", System.Windows.MessageBoxButton.YesNo);
+                if (mbr == MessageBoxResult.Yes)
+                {
+                    Characters.RemoveAt(lstVwChar.SelectedIndex);
+                    lstVwChar.Items.Remove(lstVwChar.SelectedItem);
+                }
+            }
         }
 
         private void actionAbout(object sender, RoutedEventArgs e)
