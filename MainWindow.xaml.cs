@@ -42,7 +42,7 @@ namespace PaintNight
             Characters.Add("test9");
             Characters.Add("test10");
 
-            // Fill list view with characters from list
+            // Fill lstVwChar
             fillListView();
         }
 
@@ -72,8 +72,6 @@ namespace PaintNight
             }
         }
 
-        // TODO: Edit list entry
-
         private void actionOpen(object sender, RoutedEventArgs e)
         {
             // Create OpenFileDialog 
@@ -82,64 +80,88 @@ namespace PaintNight
             dlg.DefaultExt = ".txt";
             dlg.Filter = "Text Files (*.txt)|*.txt|Data Files (*.dat)|*.dat";
 
-            // Get the selected file name and grab data
+            // Open file if User did not cancel
             if (dlg.ShowDialog() == true)
             {
                 // Clear list
                 Characters.Clear();
 
                 // Open document
-                string filename = dlg.FileName;
-                StreamReader sr = new StreamReader(filename);
+                StreamReader sr = new StreamReader(dlg.FileName);
 
-                // Fill characters with items in file
+                // Fill Characters list with data from file
                 string line = sr.ReadLine();
-                while (line != null)
+                try
                 {
-                    Characters.Add(line);
-                    line = sr.ReadLine();
+                    while (line != null)
+                    {
+                        Characters.Add(line);
+                        line = sr.ReadLine();
+                    }
+                }
+                catch (Exception exc)
+                {
+                    throw new Exception(String.Format("An error ocurred while executing the data import: {0}", exc.Message), exc);
+                }
+                finally
+                {
+                    sr.Close();
                 }
 
                 // Update ListBox to reflect change to characters list
                 fillListView();
             }
-            // TODO: Else user hits cancel
         }
 
         private void actionSave(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.InitialDirectory = Environment.CurrentDirectory;
-            dlg.DefaultExt = ".txt";
-            dlg.Filter = "Text Files (*.txt)|*.txt|Data Files (*.dat)|*.dat";
+            if (Characters.Count > 0)
+            {
+                // Create SaveFileDialog
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.InitialDirectory = Environment.CurrentDirectory;
+                sfd.DefaultExt = ".txt";
+                sfd.Filter = "Text Files (*.txt)|*.txt|Data Files (*.dat)|*.dat";
 
-            if (Characters.Count == 0) { }
-            //TODO: If no items in list, then don't save
-            else if (dlg.ShowDialog() == true)
-            {
-                // TODO: add a try-catch for sw?
-                StreamWriter sw = new StreamWriter(dlg.FileName);
-                foreach (string c in Characters)
-                    sw.WriteLine(c);
-                sw.Close();
+                // Create document if User did not cancel
+                if (sfd.ShowDialog() == true)
+                {
+                    // Open document
+                    StreamWriter sw = new StreamWriter(sfd.FileName);
+
+                    // Fill document with data from Characters list
+                    try
+                    {
+                        foreach (string c in Characters)
+                            sw.WriteLine(c);
+                    }
+                    catch (Exception exc)
+                    {
+                        throw new Exception(String.Format("An error ocurred while executing the data import: {0}", exc.Message), exc);
+                    }
+                    finally
+                    {
+                        sw.Close();
+                    }
+                }
             }
-            else // User chose Cancel or list empty
+            else
             {
-                // TODO: handle errors
+                System.Windows.MessageBox.Show("The list you're trying to save is empty!", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
         }
 
         private void actionExit(object sender, RoutedEventArgs e)
         {
+            // TODO: YesNoCancel for saving before closing
             Application.Current.Shutdown();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
-            
-            // check if null for the case that ListBoxItem is reloaded/unhighlighted
+
+            // Check if null for the case that lstVwChar is reloaded/unhighlighted
             if (lbi == null)
                 lblChar.Content = " - - - ";
             else
@@ -154,6 +176,7 @@ namespace PaintNight
             // Check that input character is not blank
             if (!String.IsNullOrEmpty(newChar))
             {
+                // Confirmation window
                 MessageBoxResult mbr = System.Windows.MessageBox.Show("Are you sure you want to add: \"" + newChar + "\"?", "Character Addition", System.Windows.MessageBoxButton.YesNo);
                 if (mbr == MessageBoxResult.Yes)
                 {                     
@@ -201,6 +224,7 @@ namespace PaintNight
                 // Get name of selected character
                 String SelectedCharacter = lbi.Content.ToString();
 
+                // Confirmation window
                 MessageBoxResult mbr = System.Windows.MessageBox.Show("Are you sure you want to delete: \"" + SelectedCharacter + "\"?", "Character Deletion", System.Windows.MessageBoxButton.YesNo);
                 if (mbr == MessageBoxResult.Yes)
                 {
@@ -215,6 +239,7 @@ namespace PaintNight
             string message = "- Andrew Gottilla -\n";
             message += "_____ Paint Night _____\n";
             //message += " - Integrated Timer\n";
+            //message += " - Google Image Integration -\n";
             message += " - Wrties character list to file\n";
             message += " - Loads character list from file";
             MessageBox.Show(message);
