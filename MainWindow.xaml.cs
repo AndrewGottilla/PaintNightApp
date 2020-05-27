@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace PaintNight
 {
@@ -256,6 +257,8 @@ namespace PaintNight
         private void btnTimer_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Implement Timer Window
+            TimerWindow tw = new TimerWindow();
+            tw.Show();
         }
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
