@@ -66,7 +66,7 @@ namespace PaintNight
 
                 // Set the item border as item separator
                 item.BorderThickness = new Thickness(0, 0, 0, 1);
-                item.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF707FCD"));
+                item.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 112, 127)) { Opacity = 0.5 };
 
                 // Finally, add the item to the list view item collection
                 ic.Add(item);
