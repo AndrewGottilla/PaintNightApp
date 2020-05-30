@@ -28,7 +28,7 @@
 
         <Label Content="Character List" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,28,0,0" VerticalAlignment="Top" Width="300" MinHeight="35" Background="#FF4F4F4F" Foreground="#FFD8D8D8" BorderBrush="#FF898989" BorderThickness="1,1,1,0" FontSize="14" FontWeight="Bold" FontFamily="Arial"/>
 
-        <ListView x:Name="lstVwChar" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="ListBox_SelectionChanged" Height="225" Width="300" Margin="10,59,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" BorderThickness="1" BorderBrush="#FF898989" Foreground="#FFE8E8E8" ClipToBounds="True">
+        <ListView x:Name="lstVwChar" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lstVwChar_SelectionChanged" Height="225" Width="300" Margin="10,59,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" BorderThickness="1" BorderBrush="#FF898989" Foreground="#FFE8E8E8" ClipToBounds="True" MouseMove="lstVwChar_MouseMove">
             <ListView.Background>
                 <SolidColorBrush Color="#FF33353B" Opacity="0.75"/>
             </ListView.Background>

@@ -157,15 +157,15 @@ namespace PaintNight
             Application.Current.Shutdown();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void actionAbout(object sender, RoutedEventArgs e)
         {
-            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
-
-            // Check if null for the case that lstVwChar is reloaded/unhighlighted
-            if (lbi == null)
-                lblChar.Content = " - - - ";
-            else
-                lblChar.Content = lbi.Content.ToString();
+            string message = "- Andrew Gottilla -\n";
+            message += "_____ Paint Night _____\n";
+            //message += " - Integrated Timer\n";
+            //message += " - Google Image Integration -\n";
+            message += " - Wrties character list to file\n";
+            message += " - Loads character list from file";
+            MessageBox.Show(message);
         }
 
         private void addChar()
@@ -234,23 +234,30 @@ namespace PaintNight
             }
         }
 
-        private void actionAbout(object sender, RoutedEventArgs e)
-        {
-            string message = "- Andrew Gottilla -\n";
-            message += "_____ Paint Night _____\n";
-            //message += " - Integrated Timer\n";
-            //message += " - Google Image Integration -\n";
-            message += " - Wrties character list to file\n";
-            message += " - Loads character list from file";
-            MessageBox.Show(message);
-        }
-
         private void btnChoose_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Add animation and sound ? Dice Rolling ?
             Random randy = new Random();
             int num = randy.Next(Characters.Count);
             lstVwChar.SelectedIndex = num;
+        }
+
+        private void lstVwChar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
+
+            // Check if null for the case that lstVwChar is reloaded/unhighlighted
+            if (lbi == null)
+                lblChar.Content = " - - - ";
+            else
+                lblChar.Content = lbi.Content.ToString();
+        }
+
+        private void lstVwChar_MouseMove(object sender, MouseEventArgs e)
+        {
+            // Prevents holding LeftMouseDown issue
+            if (lstVwChar.IsMouseCaptured)
+                lstVwChar.ReleaseMouseCapture();
         }
 
         private void btnTimer_Click(object sender, RoutedEventArgs e)
