@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PaintNight"
         mc:Ignorable="d"
         Title="Paint Night" Height="500" Width="500" ResizeMode="NoResize" Icon="Resources/icon.png">
     <Window.Background>
@@ -34,14 +33,13 @@
             </ListView.Background>
         </ListView>
 
-
         <Border BorderBrush="#FF898989" BorderThickness="1" HorizontalAlignment="Left" Height="24" Margin="10,282,0,0" VerticalAlignment="Top" Width="300">
             <Border.Background>
                 <SolidColorBrush Color="#FF33353B" Opacity="0.75"/>
             </Border.Background>
         </Border>
 
-        <TextBox x:Name="txtBxAdd" Text="Add a new character . . ." HorizontalAlignment="Left" Height="20" Margin="85,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#FF9E9E9E" Background="#6E737F" Foreground="#FFE8E8E8" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" FontWeight="Bold" FontStyle="Italic" KeyDown="eventAddChar"/>
+        <TextBox x:Name="txtBxAdd" Text="Add a new character . . ." HorizontalAlignment="Left" Height="20" Margin="85,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#FF9E9E9E" Background="#6E737F" Foreground="#FFBDBDBD" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" FontWeight="Bold" FontStyle="Italic" KeyDown="txtBxAdd_Enter" GotKeyboardFocus="txtBxAdd_GotKeyboardFocus" LostKeyboardFocus="txtBxAdd_LostKeyboardFocus"/>
 
         <Button x:Name="btndelete" Content="" Margin="12,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnDelete_Click" BorderBrush="#FF9E9E9E">
             <Button.Background>
@@ -49,7 +47,7 @@
             </Button.Background>
         </Button>
 
-        <Button x:Name="btnCreate" Content="" Margin="288,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="eventAddChar" BorderBrush="#FF9E9E9E">
+        <Button x:Name="btnCreate" Content="" Margin="288,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnAdd_Click" BorderBrush="#FF9E9E9E">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/add2.png"/>
             </Button.Background>

@@ -41,6 +41,7 @@ namespace PaintNight
             Characters.Add("test8");
             Characters.Add("test9");
             Characters.Add("test10");
+            Characters.Add("test11");
 
             // Fill lstVwChar
             fillListView();
@@ -70,6 +71,45 @@ namespace PaintNight
                 // Finally, add the item to the list view item collection
                 ic.Add(item);
             }
+        }
+
+        private void addChar()
+        {
+            // Get name of input character
+            String newChar = txtBxAdd.Text;
+
+            // Check that input character is not blank
+            if (!String.IsNullOrEmpty(newChar) && !newChar.Equals("Add a new character . . ."))
+            {
+                // Confirmation window
+                MessageBoxResult mbr = System.Windows.MessageBox.Show("Are you sure you want to add: \"" + newChar + "\"?", "Character Addition", System.Windows.MessageBoxButton.YesNo);
+                if (mbr == MessageBoxResult.Yes)
+                {
+                    // Get the list view item collection
+                    ItemCollection ic = lstVwChar.Items;
+
+                    // Create the new item
+                    ListViewItem newCharItem = new ListViewItem();
+                    newCharItem.Content = txtBxAdd.Text;
+                    newCharItem.BorderThickness = new Thickness(0, 0, 0, 1);
+                    newCharItem.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF707FCD");
+
+                    // Finally, add the item to the list view item collection
+                    ic.Add(newCharItem);
+
+                    // Add the new item to the character list
+                    Characters.Add(newChar);
+
+                    // Clear the TextBox
+                    txtBxAdd.Text = "";
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Please enter a valid character", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            Keyboard.Focus(txtBxAdd);
         }
 
         private void actionOpen(object sender, RoutedEventArgs e)
@@ -147,16 +187,11 @@ namespace PaintNight
             }
             else
             {
-                System.Windows.MessageBox.Show("The list you're trying to save is empty!", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("The list you're trying to save is empty!", "Character Error", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void actionExit(object sender, RoutedEventArgs e)
-        {
-            // TODO: YesNoCancel for saving before closing
-            Application.Current.Shutdown();
-        }
-
+        // TODO: Should redo this text
         private void actionAbout(object sender, RoutedEventArgs e)
         {
             string message = "- Andrew Gottilla -\n";
@@ -168,52 +203,19 @@ namespace PaintNight
             MessageBox.Show(message);
         }
 
-        private void addChar()
+        private void actionExit(object sender, RoutedEventArgs e)
         {
-            // Get name of input character
-            String newChar = txtBxAdd.Text;
-
-            // Check that input character is not blank
-            if (!String.IsNullOrEmpty(newChar))
-            {
-                // Confirmation window
-                MessageBoxResult mbr = System.Windows.MessageBox.Show("Are you sure you want to add: \"" + newChar + "\"?", "Character Addition", System.Windows.MessageBoxButton.YesNo);
-                if (mbr == MessageBoxResult.Yes)
-                {                     
-                    // Get the list view item collection
-                    ItemCollection ic = lstVwChar.Items;
-
-                    // Create the new item
-                    ListViewItem newCharItem = new ListViewItem();
-                    newCharItem.Content = txtBxAdd.Text;
-                    newCharItem.BorderThickness = new Thickness(0, 0, 0, 1);
-                    newCharItem.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF707FCD"));
-
-                    // Finally, add the item to the list view item collection
-                    ic.Add(newCharItem);
-
-                    // Add the new item to the character list
-                    Characters.Add(newChar);
-                }
-            }
-
-            // Clear the TextBox
-            txtBxAdd.Text = "";
-        }
-
-        // This function is for pressing enter inside the textbox
-        private void eventAddChar(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-                addChar();
+            // TODO: YesNoCancel for saving before closing
+            Application.Current.Shutdown();
         }
 
         // This function gets called when you click the add button
-        private void eventAddChar(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             addChar();
         }
 
+        // This function gets called when you click the delete button
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             // Grab Item selected in list
@@ -253,13 +255,42 @@ namespace PaintNight
                 lblChar.Content = lbi.Content.ToString();
         }
 
+        // Prevents holding LeftMouseDown issue in lstVwChar
         private void lstVwChar_MouseMove(object sender, MouseEventArgs e)
         {
-            // Prevents holding LeftMouseDown issue
             if (lstVwChar.IsMouseCaptured)
                 lstVwChar.ReleaseMouseCapture();
         }
 
+        // Function for txtBxAdd 'Hint' (1/2)
+        private void txtBxAdd_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (txtBxAdd.Text == "Add a new character . . .")
+            {
+                txtBxAdd.Text = "";
+                txtBxAdd.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFE8E8E8");
+            }
+        }
+
+        // Function for txtBxAdd 'Hint' (2/2)
+        private void txtBxAdd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtBxAdd.Text))
+            {
+                txtBxAdd.Text = "Add a new character . . .";
+                txtBxAdd.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFBDBDBD");
+            }
+        }
+
+        // This function is for pressing enter inside the textbox
+        private void txtBxAdd_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+                addChar();
+        }
+
+        // ==================================================================================================================
+        
         private void btnTimer_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Implement Timer Window
