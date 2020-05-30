@@ -8,7 +8,7 @@
         Title="Paint Night - Timer" Height="150" Width="350"
         Loaded="Window_Loaded" Background="#FF4F4F4F" Icon="Resources/icon.png" ResizeMode="NoResize">
     <Grid>
-        <Label x:Name="lblTimer" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFD8D8D8" FontSize="22">
+        <Label x:Name="lblTimer" Content="0:00" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFD8D8D8" FontSize="22">
             <Label.Effect>
                 <DropShadowEffect Direction="250" RenderingBias="Quality" ShadowDepth="4" BlurRadius="7"/>
             </Label.Effect>
