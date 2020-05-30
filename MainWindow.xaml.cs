@@ -92,7 +92,7 @@ namespace PaintNight
                     ListViewItem newCharItem = new ListViewItem();
                     newCharItem.Content = txtBxAdd.Text;
                     newCharItem.BorderThickness = new Thickness(0, 0, 0, 1);
-                    newCharItem.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF707FCD");
+                    newCharItem.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 112, 127)) { Opacity = 0.5 };
 
                     // Finally, add the item to the list view item collection
                     ic.Add(newCharItem);
@@ -102,6 +102,7 @@ namespace PaintNight
 
                     // Clear the TextBox
                     txtBxAdd.Text = "";
+                    lstVwChar.ScrollIntoView(newCharItem);
                 }
             }
             else
