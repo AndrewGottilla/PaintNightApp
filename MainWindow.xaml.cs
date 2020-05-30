@@ -244,6 +244,7 @@ namespace PaintNight
             Random randy = new Random();
             int num = randy.Next(Characters.Count);
             lstVwChar.SelectedIndex = num;
+            lstVwChar.ScrollIntoView(lstVwChar.SelectedItem);
         }
 
         private void lstVwChar_SelectionChanged(object sender, SelectionChangedEventArgs e)
