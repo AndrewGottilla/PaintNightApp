@@ -6,13 +6,18 @@
         xmlns:local="clr-namespace:PaintNight"
         mc:Ignorable="d"
         Title="Paint Night - Timer" Height="150" Width="350"
-        Loaded="Window_Loaded" Background="#FF4F4F4F" Icon="Resources/icon.png" ResizeMode="NoResize">
+        Loaded="Window_Loaded" Closed="Window_Closed" Background="#FF4F4F4F" Icon="Resources/icon.png" ResizeMode="NoResize">
     <Grid>
-        <Label x:Name="lblTimer" Content="0:00" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFD8D8D8" FontSize="22">
+        <Label x:Name="lblTimer" Content="0:00" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="22" Margin="0,10,0,0">
             <Label.Effect>
                 <DropShadowEffect Direction="250" RenderingBias="Quality" ShadowDepth="4" BlurRadius="7"/>
             </Label.Effect>
         </Label>
+        <Button x:Name="btnPlayPause" Content="Play" HorizontalAlignment="Left" Margin="85,65,0,0" VerticalAlignment="Top" Width="75" Click="btnPlayPause_Click"/>
+        <Button x:Name="btnStopReset" Content="Reset" HorizontalAlignment="Left" Margin="199,65,0,0" VerticalAlignment="Top" Width="75" Click="btnStopReset_Click"/>
+        <Button x:Name="btnAddThirty" Content="+30 Seconds" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="75" Click="btnAddThirty_Click"/>
+        <Button x:Name="btnAddMin" Content="+1 Minute" HorizontalAlignment="Left" Margin="137,91,0,0" VerticalAlignment="Top" Width="75" Click="btnAddMin_Click"/>
+        <Button x:Name="btnAddFive" Content="+5 Minutes" HorizontalAlignment="Left" Margin="259,91,0,0" VerticalAlignment="Top" Width="75" Click="btnAddFive_Click"/>
 
     </Grid>
 </Window>

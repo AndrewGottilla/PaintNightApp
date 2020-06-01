@@ -296,7 +296,6 @@ namespace PaintNight
         
         private void btnTimer_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Implement Timer Window
             TimerWindow tw = new TimerWindow();
             tw.Show();
         }
