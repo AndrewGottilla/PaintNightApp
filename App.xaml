@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:PaintNight"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!--A Style that affects all Buttons-->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF4F4F4F" />
+            <Setter Property="Foreground" Value="#FFD8D8D8"/>
+            <Setter Property="BorderBrush" Value="#FF898989"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
     </Application.Resources>
 </Application>

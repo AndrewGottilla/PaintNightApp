@@ -41,21 +41,21 @@
 
         <TextBox x:Name="txtBxAdd" Text="Add a new character . . ." HorizontalAlignment="Left" Height="20" Margin="85,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#FF9E9E9E" Background="#6E737F" Foreground="#FFBDBDBD" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" FontWeight="Bold" FontStyle="Italic" KeyDown="txtBxAdd_Enter" GotKeyboardFocus="txtBxAdd_GotKeyboardFocus" LostKeyboardFocus="txtBxAdd_LostKeyboardFocus"/>
 
-        <Button x:Name="btndelete" Content="" Margin="12,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnDelete_Click" BorderBrush="#FF9E9E9E">
+        <Button x:Name="btndelete" Content="" Margin="12,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnDelete_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/delete2.png"/>
             </Button.Background>
         </Button>
 
-        <Button x:Name="btnCreate" Content="" Margin="288,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnAdd_Click" BorderBrush="#FF9E9E9E">
+        <Button x:Name="btnCreate" Content="" Margin="288,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnAdd_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/add2.png"/>
             </Button.Background>
         </Button>
 
-        <Button x:Name="btnChoose" Content="Choose Character" Margin="320,28,10,0" VerticalAlignment="Top" Height="50" FontSize="16" Background="#FF4F4F4F" Foreground="#FFD8D8D8" BorderBrush="#FF898989" BorderThickness="1" Click="btnChoose_Click"/>
+        <Button x:Name="btnChoose" Content="Choose Character" Margin="320,28,10,0" VerticalAlignment="Top" Height="50" FontSize="16" Click="btnChoose_Click"/>
 
-        <Button x:Name="btnTimer" Content="Open Timer" Margin="320,83,10,0" VerticalAlignment="Top" Height="50" FontSize="16" Background="#FF4F4F4F" Foreground="#FFD8D8D8" BorderBrush="#FF898989" BorderThickness="1" Click="btnTimer_Click"/>
+        <Button x:Name="btnTimer" Content="Open Timer" Margin="320,83,10,0" VerticalAlignment="Top" Height="50" FontSize="16" Click="btnTimer_Click"/>
 
         <Separator Margin="15,310,15,150" RenderTransformOrigin="0.5,0.5" Opacity=".75" Background="#FF4F4F4F" Foreground="#6E737F" >
             <Separator.RenderTransform>
@@ -91,19 +91,19 @@
             <Image Height="140" Width="164" Source="Resources/background2.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="164" MaxHeight="140"/>
         </Border>
 
-        <Button x:Name="btnNext_img" Content="" Margin="0,282,10,0" VerticalAlignment="Top" Height="20" Click="btnNext_Click" BorderBrush="#FF9E9E9E" HorizontalAlignment="Right" Width="20">
+        <Button x:Name="btnNext_img" Content="" Margin="0,282,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Height="20" Click="btnNext_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/next.png"/>
             </Button.Background>
         </Button>
 
-        <Button x:Name="btnPrev_img" Content="" Margin="320,282,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnPrev_Click" BorderBrush="#FF9E9E9E">
+        <Button x:Name="btnPrev_img" Content="" Margin="320,282,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnPrev_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/prev.png"/>
             </Button.Background>
         </Button>
 
-        <Button x:Name="btnCopy_img" Content="" Margin="382,282,0,0" VerticalAlignment="Top" Height="20" Width="40" HorizontalAlignment="Left" Click="btnImage_Click" BorderBrush="#FF9E9E9E">
+        <Button x:Name="btnCopy_img" Content="" Margin="382,282,0,0" VerticalAlignment="Top" Height="20" Width="40" HorizontalAlignment="Left" Click="btnImage_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/add2.png"/>
             </Button.Background>

@@ -64,7 +64,7 @@ namespace PaintNight
         private void printTime()
         {
             TimeSpan realTime = TimeSpan.FromSeconds(time);
-            lblTimer.Content = realTime.ToString(@"mm\:ss");
+            lblTimer.Content = realTime.ToString(@"\mm\:ss");
         }
 
         private void Dt_Tick(object sender, EventArgs e)
