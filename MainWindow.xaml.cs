@@ -193,7 +193,7 @@ namespace PaintNight
             }
         }
 
-        // TODO: Should redo this text
+        // TODO: Redo the about message
         private void actionAbout(object sender, RoutedEventArgs e)
         {
             string message = "- Andrew Gottilla -\n";
