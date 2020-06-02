@@ -80,26 +80,26 @@ namespace PaintNight
             {
                 dt.Stop();
                 ticking = false;
-                btnPlayPause.Content = "Play";
-                btnStopReset.IsEnabled = true;
+                btnPlayPause.Content = "Resume";
+                btnReset.IsEnabled = true;
             }
             else
             {
                 dt.Start();
                 ticking = true;
                 btnPlayPause.Content = "Pause";
-                btnStopReset.IsEnabled = false;
+                btnReset.IsEnabled = false;
             }
         }
 
-        private void btnStopReset_Click(object sender, RoutedEventArgs e)
+        private void btnReset_Click(object sender, RoutedEventArgs e)
         {
             if (ticking)
             {
                 dt.Stop();
                 ticking = false;
-                btnPlayPause.Content = "Play";
-                btnStopReset.IsEnabled = true;
+                btnPlayPause.Content = "Start";
+                btnReset.IsEnabled = true;
             }
             else
             {
@@ -125,5 +125,6 @@ namespace PaintNight
             time += 300;
             printTime();
         }
+
     }
 }

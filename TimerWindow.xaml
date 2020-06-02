@@ -13,11 +13,11 @@
                 <DropShadowEffect Direction="250" RenderingBias="Quality" ShadowDepth="4" BlurRadius="7"/>
             </Label.Effect>
         </Label>
-        <Button x:Name="btnPlayPause" Content="Play" HorizontalAlignment="Left" Margin="85,65,0,0" VerticalAlignment="Top" Width="75" Click="btnPlayPause_Click"/>
-        <Button x:Name="btnStopReset" Content="Reset" HorizontalAlignment="Left" Margin="199,65,0,0" VerticalAlignment="Top" Width="75" Click="btnStopReset_Click"/>
-        <Button x:Name="btnAddThirty" Content="+30 Seconds" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="75" Click="btnAddThirty_Click"/>
-        <Button x:Name="btnAddMin" Content="+1 Minute" HorizontalAlignment="Left" Margin="137,91,0,0" VerticalAlignment="Top" Width="75" Click="btnAddMin_Click"/>
-        <Button x:Name="btnAddFive" Content="+5 Minutes" HorizontalAlignment="Left" Margin="259,91,0,0" VerticalAlignment="Top" Width="75" Click="btnAddFive_Click"/>
+        <Button x:Name="btnPlayPause" Content="Start" HorizontalAlignment="Left" Margin="70,0,0,35" Width="75" Click="btnPlayPause_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnReset" Content="Reset" HorizontalAlignment="Left" Margin="197,0,0,35" Width="75" Click="btnReset_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnAddThirty" Content="+30 Seconds" HorizontalAlignment="Left" Margin="10,0,0,10" Width="75" Click="btnAddThirty_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnAddMin" Content="+1 Minute" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="75" Click="btnAddMin_Click"/>
+        <Button x:Name="btnAddFive" Content="+5 Minutes" Margin="259,0,10,10" Click="btnAddFive_Click" Height="20" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>
