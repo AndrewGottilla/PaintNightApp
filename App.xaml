@@ -4,12 +4,48 @@
              xmlns:local="clr-namespace:PaintNight"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!--A Style that affects all Buttons-->
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="#FF4F4F4F" />
+        
+        <Style TargetType="Button" x:Key="NotImageButton">
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Foreground" Value="#FFD8D8D8"/>
-            <Setter Property="BorderBrush" Value="#FF898989"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#FF4F4F4F"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="#FF898989" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF4F4F4F"/>
+                    <Setter Property="Background" Value="#FFD8D8D8"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
+        
+        <Style TargetType="Button" x:Key="ImageButton">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Opacity" Value=".85"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="#FF898989" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Do something to image button here -->
+                                <Setter Property="Opacity" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </Application.Resources>
 </Application>

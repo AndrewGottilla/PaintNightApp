@@ -37,7 +37,8 @@ namespace PaintNight
                 // if old instance exists, close the new instance
                 this.Close();
 
-                System.Windows.MessageBox.Show("Timer is already active!\n", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+                String errMsg = "Timer is already active!\nPress OK to go to the Timer Window";
+                System.Windows.MessageBox.Show(errMsg, "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
 
                 if (!Current.IsActive)
                     Current.Activate();
@@ -78,14 +79,14 @@ namespace PaintNight
 
         private void btnPlayPause_Click(object sender, RoutedEventArgs e)
         {
-            if (ticking)
+            if (ticking) // Pause
             {
                 dt.Stop();
                 ticking = false;
                 btnPlayPause.Content = "Resume";
                 btnReset.IsEnabled = true;
             }
-            else
+            else // Play/Resume
             {
                 dt.Start();
                 ticking = true;
