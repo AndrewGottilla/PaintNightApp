@@ -289,11 +289,18 @@ namespace PaintNight
             }
         }
 
-        // This function is for pressing enter inside the textbox
+        // This function is for pressing Enter inside the textbox
         private void txtBxAdd_Enter(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
                 addChar();
+        }
+
+        // This function is for pressing Escape in the program
+        private void Grid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                lstVwChar.SelectedItem = null;
         }
 
         private void btnTimer_Click(object sender, RoutedEventArgs e)
@@ -318,5 +325,6 @@ namespace PaintNight
         {
             // TODO: Copy Google Image SOURCE to Clipboard
         }
+
     }
 }

@@ -9,7 +9,7 @@
         <ImageBrush ImageSource="Resources/background2.png"/>
     </Window.Background>
 
-    <Grid>
+    <Grid KeyDown="Grid_KeyDown">
 
         <Menu x:Name="menu" VerticalAlignment="Top">
             <!--  Background="#FF424242" Foreground="#FFE8E8E8" -->
