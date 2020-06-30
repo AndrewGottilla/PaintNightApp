@@ -74,46 +74,6 @@ namespace PaintNight
             }
         }
 
-        private void addChar()
-        {
-            // Get name of input character
-            String newChar = txtBxAdd.Text;
-
-            // Check that input character is not blank
-            if (!String.IsNullOrEmpty(newChar) && !newChar.Equals("Add a new character . . ."))
-            {
-                // Confirmation window
-                MessageBoxResult mbr = System.Windows.MessageBox.Show("Are you sure you want to add: \"" + newChar + "\"?", "Character Addition", System.Windows.MessageBoxButton.YesNo);
-                if (mbr == MessageBoxResult.Yes)
-                {
-                    // Get the list view item collection
-                    ItemCollection ic = lstVwChar.Items;
-
-                    // Create the new item
-                    ListViewItem newCharItem = new ListViewItem();
-                    newCharItem.Content = txtBxAdd.Text;
-                    newCharItem.BorderThickness = new Thickness(0, 0, 0, 1);
-                    newCharItem.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 112, 127)) { Opacity = 0.5 };
-
-                    // Finally, add the item to the list view item collection
-                    ic.Add(newCharItem);
-
-                    // Add the new item to the character list
-                    Characters.Add(newChar);
-
-                    // Clear the TextBox
-                    txtBxAdd.Text = "";
-                    lstVwChar.ScrollIntoView(newCharItem);
-                }
-            }
-            else
-            {
-                System.Windows.MessageBox.Show("Please enter a valid character", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            Keyboard.Focus(txtBxAdd);
-        }
-
         private void actionOpen(object sender, RoutedEventArgs e)
         {
             // Create OpenFileDialog 
@@ -193,15 +153,13 @@ namespace PaintNight
             }
         }
 
-        // TODO: Redo the about message
         private void actionAbout(object sender, RoutedEventArgs e)
         {
             string message = "- Andrew Gottilla -\n";
-            message += "_____ Paint Night _____\n";
-            //message += " - Integrated Timer\n";
-            //message += " - Google Image Integration -\n";
-            message += " - Wrties character list to file\n";
-            message += " - Loads character list from file";
+            message += "This is a program I made to help with a fun activity that I've created for my friends and I.\n";
+            message += "We hang out on Discord, fill a list with a bunch of characters (including ourselves),\n";
+            message += "then randomly have a character chosen. We then use our computers to create/draw/edit\n";
+            message += "that character! We typically set a 5 or 10 minute timer. I call it 'Paint Night'!";
             MessageBox.Show(message);
         }
 
@@ -209,12 +167,6 @@ namespace PaintNight
         {
             // TODO: YesNoCancel for saving before closing
             Application.Current.Shutdown();
-        }
-
-        // This function gets called when you click the add button
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            addChar();
         }
 
         // This function gets called when you click the delete button
@@ -242,31 +194,15 @@ namespace PaintNight
             }
         }
 
-        private void btnChoose_Click(object sender, RoutedEventArgs e)
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Add animation and sound ? Dice Rolling ?
-            Random randy = new Random();
-            int num = randy.Next(Characters.Count);
-            lstVwChar.SelectedIndex = num;
-            lstVwChar.ScrollIntoView(lstVwChar.SelectedItem);
+
         }
 
-        private void lstVwChar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        // This function gets called when you click the add button
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
-
-            // Check if null for the case that lstVwChar is reloaded/unhighlighted
-            if (lbi == null)
-                lblChar.Content = " - - - ";
-            else
-                lblChar.Content = lbi.Content.ToString();
-        }
-
-        // Prevents holding LeftMouseDown issue in lstVwChar
-        private void lstVwChar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (lstVwChar.IsMouseCaptured)
-                lstVwChar.ReleaseMouseCapture();
+            addChar();
         }
 
         // Function for txtBxAdd 'Hint' (1/2)
@@ -290,23 +226,93 @@ namespace PaintNight
         }
 
         // This function is for pressing Enter inside the textbox
-        private void txtBxAdd_Enter(object sender, KeyEventArgs e)
+        private void txtBxAdd_Shortcuts(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
                 addChar();
+            else if (e.Key == Key.Escape)
+            {
+                txtBxAdd.Text = "";
+                Keyboard.ClearFocus();
+            }
         }
 
-        // This function is for pressing Escape in the program
-        private void Grid_KeyDown(object sender, KeyEventArgs e)
+        private void addChar()
         {
-            if (e.Key == Key.Escape)
-                lstVwChar.SelectedItem = null;
+            // Get name of input character
+            String newChar = txtBxAdd.Text;
+
+            // Check that input character is not blank
+            if (!String.IsNullOrEmpty(newChar) && !newChar.Equals("Add a new character . . ."))
+            {
+                // Confirmation window
+                MessageBoxResult mbr = System.Windows.MessageBox.Show("Are you sure you want to add: \"" + newChar + "\"?", "Character Addition", System.Windows.MessageBoxButton.YesNo);
+                if (mbr == MessageBoxResult.Yes)
+                {
+                    // Get the list view item collection
+                    ItemCollection ic = lstVwChar.Items;
+
+                    // Create the new item
+                    ListViewItem newCharItem = new ListViewItem();
+                    newCharItem.Content = txtBxAdd.Text;
+                    newCharItem.BorderThickness = new Thickness(0, 0, 0, 1);
+                    newCharItem.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 112, 127)) { Opacity = 0.5 };
+
+                    // Finally, add the item to the list view item collection
+                    ic.Add(newCharItem);
+
+                    // Add the new item to the character list
+                    Characters.Add(newChar);
+
+                    // Clear the TextBox
+                    txtBxAdd.Text = "";
+                    lstVwChar.ScrollIntoView(newCharItem);
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Please enter a valid character", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            Keyboard.Focus(txtBxAdd);
+        }
+
+        private void btnChoose_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Add animation and sound ? Dice Rolling ?
+            Random randy = new Random();
+            int num = randy.Next(Characters.Count);
+            lstVwChar.SelectedIndex = num;
+            lstVwChar.ScrollIntoView(lstVwChar.SelectedItem);
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            lstVwChar.SelectedItem = null;
         }
 
         private void btnTimer_Click(object sender, RoutedEventArgs e)
         {
             TimerWindow tw = new TimerWindow();
             tw.Show();
+        }
+
+        private void lstVwChar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
+
+            // Check if null for the case that lstVwChar is reloaded/unhighlighted
+            if (lbi == null)
+                lblChar.Content = " - - - ";
+            else
+                lblChar.Content = lbi.Content.ToString();
+        }
+
+        // Prevents holding LeftMouseDown issue in lstVwChar
+        private void lstVwChar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (lstVwChar.IsMouseCaptured)
+                lstVwChar.ReleaseMouseCapture();
         }
 
         // ==================================================================================================================
@@ -325,6 +331,5 @@ namespace PaintNight
         {
             // TODO: Copy Google Image SOURCE to Clipboard
         }
-
     }
 }

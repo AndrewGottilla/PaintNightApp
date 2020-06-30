@@ -9,7 +9,7 @@
         <ImageBrush ImageSource="Resources/background2.png"/>
     </Window.Background>
 
-    <Grid KeyDown="Grid_KeyDown">
+    <Grid x:Name="PaintNightGrid">
 
         <Menu x:Name="menu" VerticalAlignment="Top">
             <!--  Background="#FF424242" Foreground="#FFE8E8E8" -->
@@ -33,29 +33,31 @@
             </ListView.Background>
         </ListView>
 
-        <Border BorderBrush="#FF898989" BorderThickness="1" HorizontalAlignment="Left" Height="24" Margin="10,282,0,0" VerticalAlignment="Top" Width="300">
+        <Border BorderBrush="#FF898989" BorderThickness="1" HorizontalAlignment="Left" Height="20" Margin="10,283,0,0" VerticalAlignment="Top" Width="300">
             <Border.Background>
                 <SolidColorBrush Color="#FF33353B" Opacity="0.75"/>
             </Border.Background>
         </Border>
 
-        <TextBox x:Name="txtBxAdd" Text="Add a new character . . ." HorizontalAlignment="Left" Height="20" Margin="85,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#FF9E9E9E" Background="#6E737F" Foreground="#FFBDBDBD" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" FontWeight="Bold" FontStyle="Italic" KeyDown="txtBxAdd_Enter" GotKeyboardFocus="txtBxAdd_GotKeyboardFocus" LostKeyboardFocus="txtBxAdd_LostKeyboardFocus"/>
+        <TextBox x:Name="txtBxAdd" Text="Add a new character . . ." HorizontalAlignment="Left" Height="20" Margin="48,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" BorderBrush="#FF9E9E9E" Background="#6E737F" Foreground="#FFBDBDBD" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" FontWeight="Bold" FontStyle="Italic" KeyDown="txtBxAdd_Shortcuts" GotKeyboardFocus="txtBxAdd_GotKeyboardFocus" LostKeyboardFocus="txtBxAdd_LostKeyboardFocus"/>
 
-        <Button Style="{StaticResource ImageButton}" x:Name="btndelete" Content="" Margin="12,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnDelete_Click">
+        <Button Style="{StaticResource ImageButton}" x:Name="btndelete" Content="" Margin="10,283,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnDelete_Click">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/delete2.png"/>
+                <ImageBrush ImageSource="Resources/delete3.png"/>
             </Button.Background>
         </Button>
 
-        <Button Style="{StaticResource ImageButton}" x:Name="btnCreate" Content="" Margin="288,284,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnAdd_Click">
+        <Button Style="{StaticResource ImageButton}" x:Name="btnCreate" Content="" Margin="289,283,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnAdd_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/add2.png"/>
             </Button.Background>
         </Button>
 
-        <Button Style="{StaticResource NotImageButton}" x:Name="btnChoose" Content="Choose Character" Margin="320,28,10,0" VerticalAlignment="Top" Height="50" FontSize="16" Click="btnChoose_Click"/>
+        <Button Style="{StaticResource NotImageButton}" x:Name="btnChoose" Content="Choose Character" Margin="320,28,9.6,0" VerticalAlignment="Top" Height="30" FontSize="16" Click="btnChoose_Click"/>
 
-        <Button Style="{StaticResource NotImageButton}" x:Name="btnTimer" Content="Open Timer" Margin="320,83,10,0" VerticalAlignment="Top" Height="50" FontSize="16" Click="btnTimer_Click"/>
+        <Button Style="{StaticResource NotImageButton}" x:Name="btnClear" Content="Clear Selection" Margin="320,63,9.6,0" VerticalAlignment="Top" Height="30" FontSize="16" Click="btnClear_Click"/>
+
+        <Button Style="{StaticResource NotImageButton}" x:Name="btnTimer" Content="Open Timer" Margin="320,98,9.6,0" VerticalAlignment="Top" Height="30" FontSize="16" Click="btnTimer_Click"/>
 
         <Separator Margin="15,315,15,145" RenderTransformOrigin="0.5,0.5" Opacity=".70" Background="#FF4F4F4F">
             <Separator.RenderTransform>
@@ -105,6 +107,10 @@
                 <ImageBrush ImageSource="Resources/add2.png"/>
             </Button.Background>
         </Button>
-
+        <Button Style="{StaticResource ImageButton}" x:Name="btnEdit" Content="" Margin="29,283,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnEdit_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/delete2.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

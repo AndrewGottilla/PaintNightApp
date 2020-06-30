@@ -117,6 +117,7 @@
     <Resource Include="Resources\delete2.png" />
     <Resource Include="Resources\next.png" />
     <Resource Include="Resources\prev.png" />
+    <Resource Include="Resources\delete3.png" />
     <Content Include="Resources\exit_cue_y.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
