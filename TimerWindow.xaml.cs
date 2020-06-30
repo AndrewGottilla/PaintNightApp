@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,7 +24,7 @@ namespace PaintNight
     {
         public static TimerWindow Current { get; private set; } //singleton
         private DispatcherTimer dt = new DispatcherTimer();
-        private int time = 300;
+        private int time = 10;
         private bool ticking = false;
 
         public TimerWindow()
@@ -75,28 +77,54 @@ namespace PaintNight
             // Counts down
             time--;
             printTime();
+            if (time == 0)
+            {
+                soundTheAlarm();
+            }
+        }
+
+        private void soundTheAlarm()
+        {
+            dt.Stop();
+            ticking = false;
+            btnPlayPause.IsEnabled = false;
+            btnReset.IsEnabled = true;
+            try //FileNotFoundException
+            {
+                SoundPlayer sp = new SoundPlayer(Environment.CurrentDirectory + "\\Resources\\exit_cue_y.wav");
+                sp.Play();
+            }
+            catch (Exception exc)
+            {
+                System.Windows.MessageBox.Show("Error!\n" + Environment.CurrentDirectory + "\\Resources\\exit_cue_y.wav not found!", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnPlayPause_Click(object sender, RoutedEventArgs e)
         {
-            if (ticking) // Pause
+            if (time != 0)
             {
-                dt.Stop();
-                ticking = false;
-                btnPlayPause.Content = "Resume";
-                btnReset.IsEnabled = true;
+                if (ticking) // Pause
+                {
+                    dt.Stop();
+                    ticking = false;
+                    btnPlayPause.Content = "Resume";
+                    btnReset.IsEnabled = true;
+                }
+                else // Play/Resume
+                {
+                    dt.Start();
+                    ticking = true;
+                    btnPlayPause.Content = "Pause";
+                    btnReset.IsEnabled = false;
+                }
             }
-            else // Play/Resume
-            {
-                dt.Start();
-                ticking = true;
-                btnPlayPause.Content = "Pause";
-                btnReset.IsEnabled = false;
-            }
+            
         }
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
+            btnPlayPause.IsEnabled = true;
             btnPlayPause.Content = "Start";
             time = 300;
             printTime();

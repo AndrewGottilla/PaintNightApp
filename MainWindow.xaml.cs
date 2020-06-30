@@ -236,6 +236,10 @@ namespace PaintNight
                     lstVwChar.Items.Remove(lstVwChar.SelectedItem);
                 }
             }
+            else
+            {
+                System.Windows.MessageBox.Show("Please select a character", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnChoose_Click(object sender, RoutedEventArgs e)
@@ -292,13 +296,13 @@ namespace PaintNight
                 addChar();
         }
 
-        // ==================================================================================================================
-        
         private void btnTimer_Click(object sender, RoutedEventArgs e)
         {
             TimerWindow tw = new TimerWindow();
             tw.Show();
         }
+
+        // ==================================================================================================================
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {

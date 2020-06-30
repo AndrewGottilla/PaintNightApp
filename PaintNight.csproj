@@ -117,6 +117,12 @@
     <Resource Include="Resources\delete2.png" />
     <Resource Include="Resources\next.png" />
     <Resource Include="Resources\prev.png" />
+    <Content Include="Resources\exit_cue_y.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\quick_fart_x.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
