@@ -94,7 +94,7 @@ namespace PaintNight
                 SoundPlayer sp = new SoundPlayer(Environment.CurrentDirectory + "\\Resources\\exit_cue_y.wav");
                 sp.Play();
             }
-            catch (Exception exc)
+            catch
             {
                 System.Windows.MessageBox.Show("Error!\n" + Environment.CurrentDirectory + "\\Resources\\exit_cue_y.wav not found!", "Paint Night", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             }

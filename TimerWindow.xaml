@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PaintNight"
         mc:Ignorable="d"
         Title="Paint Night - Timer" Height="150" Width="350"
-        Loaded="Window_Loaded" Closed="Window_Closed" Background="#FF4F4F4F" Icon="Resources/icon.png" ResizeMode="NoResize">
+        Loaded="Window_Loaded" Closed="Window_Closed" Background="#FF4F4F4F" Icon="Resources/icon.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="lblTimer" Content="00:00" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="22">
             <Label.Effect>
