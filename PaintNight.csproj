@@ -58,10 +58,17 @@
     <Compile Include="EditCharDialog.xaml.cs">
       <DependentUpon>EditCharDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditTimeDialog.xaml.cs">
+      <DependentUpon>EditTimeDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TimerWindow.xaml.cs">
       <DependentUpon>TimerWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="EditCharDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTimeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

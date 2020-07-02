@@ -64,6 +64,8 @@ namespace PaintNight
             // If user closes the window -- this is the new instance, Current is the old one
             if ((Current == this) && (Current != null))
                 Current = null;
+
+            dt.Stop();
         }
 
         private void printTime()
@@ -89,6 +91,7 @@ namespace PaintNight
             ticking = false;
             btnPlayPause.IsEnabled = false;
             btnReset.IsEnabled = true;
+            btnSetTime.IsEnabled = true;
             try //FileNotFoundException
             {
                 SoundPlayer sp = new SoundPlayer(Environment.CurrentDirectory + "\\Resources\\exit_cue_y.wav");
@@ -110,6 +113,7 @@ namespace PaintNight
                     ticking = false;
                     btnPlayPause.Content = "Resume";
                     btnReset.IsEnabled = true;
+                    btnSetTime.IsEnabled = true;
                 }
                 else // Play/Resume
                 {
@@ -117,6 +121,7 @@ namespace PaintNight
                     ticking = true;
                     btnPlayPause.Content = "Pause";
                     btnReset.IsEnabled = false;
+                    btnSetTime.IsEnabled = false;
                 }
             }
             
@@ -148,5 +153,14 @@ namespace PaintNight
             printTime();
         }
 
+        private void btnSetTime_Click(object sender, RoutedEventArgs e)
+        {
+            EditTimeDialog etd = new EditTimeDialog(time / 60, time % 60);
+            if (etd.ShowDialog() == true)
+            {
+                time = etd.Minutes * 60 + etd.Seconds;
+                printTime();
+            }
+        }
     }
 }
