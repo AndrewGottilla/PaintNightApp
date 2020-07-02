@@ -6,13 +6,16 @@
         xmlns:local="clr-namespace:PaintNight"
         mc:Ignorable="d"
         Title="Edit Character" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Icon="Resources/icon.png" ResizeMode="NoResize" Topmost="True" ContentRendered="Window_ContentRendered">
+    
     <Grid Margin="15">
         <Image HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Source="Resources/icon.png"/>
+        
         <Label x:Name="lblCharacter" Content="Edit character: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,0,0,0"/>
+        
         <TextBox x:Name="txtBxEdit" HorizontalAlignment="Left" TextWrapping="Wrap" MinWidth="200" Margin="55,26,0,0" Height="20" VerticalAlignment="Top" SelectionBrush="#FF707FCD" SelectionOpacity="0.5"/>
+        
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="180,51,0,0" VerticalAlignment="Top" Width="75" IsCancel="True"/>
+
         <Button x:Name="btnOkay" Content="Ok" HorizontalAlignment="Left" Margin="100,51,0,0" VerticalAlignment="Top" Width="75" Click="btnOkay_Click" IsDefault="True"/>
-
-
     </Grid>
 </Window>

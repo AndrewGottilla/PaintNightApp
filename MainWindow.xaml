@@ -8,9 +8,8 @@
     <Window.Background>
         <ImageBrush ImageSource="Resources/background2.png"/>
     </Window.Background>
-
+    
     <Grid x:Name="PaintNightGrid">
-
         <Menu x:Name="menu" VerticalAlignment="Top">
             <!--  Background="#FF424242" Foreground="#FFE8E8E8" -->
             <MenuItem Header="File">
@@ -107,6 +106,7 @@
                 <ImageBrush ImageSource="Resources/add2.png"/>
             </Button.Background>
         </Button>
+
         <Button Style="{StaticResource ImageButton}" x:Name="btnEdit" Content="" Margin="29,283,0,0" VerticalAlignment="Top" Height="20" Width="20" HorizontalAlignment="Left" Click="btnEdit_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/delete2.png"/>
