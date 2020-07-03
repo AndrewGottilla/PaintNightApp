@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PaintNight"
         mc:Ignorable="d"
-        Title="Edit Time" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Icon="Resources/icon.png" ResizeMode="NoResize" Topmost="True">
+        Title="Set Time" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Icon="Resources/icon.png" ResizeMode="NoResize" Topmost="True">
 
     <Grid Margin="15">
         <Image HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Source="Resources/icon.png"/>
@@ -13,10 +13,10 @@
         <Label x:Name="lblCharacter" Content="Set time: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,0,0,0"/>
 
         <TextBox x:Name="txtBxMinutes" CommandManager.PreviewExecuted="textBox_PreviewExecuted" PreviewTextInput="textBox_PreviewTextInput" ContextMenu="{x:Null}" MaxLength="2"
-                 HorizontalAlignment="Left" Margin="55,26,0,0" Width="18.5" Height="20" VerticalAlignment="Top" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" Text="00"/>
+                 HorizontalAlignment="Left" Margin="55,26,0,0" Width="18.5" Height="20" VerticalAlignment="Top" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" Text="00" GotMouseCapture="txtBxMinutes_GotMouseCapture" GotKeyboardFocus="txtBxMinutes_GotKeyboardFocus"/>
 
         <TextBox x:Name="txtBxSeconds" CommandManager.PreviewExecuted="textBox_PreviewExecuted" PreviewTextInput="textBox_PreviewTextInput" ContextMenu="{x:Null}" MaxLength="2"
-            HorizontalAlignment="Left" Margin="132,26,0,0" Width="18.5" Height="20" VerticalAlignment="Top" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" Text="00"/>
+            HorizontalAlignment="Left" Margin="132,26,0,0" Width="18.5" Height="20" VerticalAlignment="Top" SelectionBrush="#FF707FCD" SelectionOpacity="0.5" Text="00" GotKeyboardFocus="txtBxSeconds_GotKeyboardFocus" GotMouseCapture="txtBxSeconds_GotMouseCapture"/>
         
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="180,51,0,0" VerticalAlignment="Top" Width="75" IsCancel="True"/>
 

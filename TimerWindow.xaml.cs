@@ -80,9 +80,7 @@ namespace PaintNight
             time--;
             printTime();
             if (time == 0)
-            {
                 soundTheAlarm();
-            }
         }
 
         private void soundTheAlarm()
@@ -159,6 +157,8 @@ namespace PaintNight
             if (etd.ShowDialog() == true)
             {
                 time = etd.Minutes * 60 + etd.Seconds;
+                if (time > 3599)
+                    time = 3599;
                 printTime();
             }
         }

@@ -21,8 +21,26 @@ namespace PaintNight
     /// </summary>
     public partial class EditTimeDialog : Window
     {
-        public int Minutes { get { return Convert.ToInt32(txtBxMinutes.Text); } }
-        public int Seconds { get { return Convert.ToInt32(txtBxSeconds.Text); } }
+        public int Minutes
+        {
+            get
+            {
+                if (!String.IsNullOrWhiteSpace(txtBxMinutes.Text))
+                    return Convert.ToInt32(txtBxMinutes.Text);
+                else
+                    return 0;
+            }
+        }
+        public int Seconds
+        {
+            get
+            {
+                if (!String.IsNullOrWhiteSpace(txtBxSeconds.Text))
+                    return Convert.ToInt32(txtBxSeconds.Text);
+                else
+                    return 0;
+            }
+        }
 
         public EditTimeDialog(int m, int s)
         {
@@ -58,6 +76,27 @@ namespace PaintNight
         private void btnOkay_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+
+        }
+
+        private void txtBxMinutes_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            txtBxMinutes.SelectAll();
+        }
+
+        private void txtBxSeconds_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            txtBxSeconds.SelectAll();
+        }
+
+        private void txtBxMinutes_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            txtBxMinutes.SelectAll();
+        }
+
+        private void txtBxSeconds_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            txtBxSeconds.SelectAll();
         }
     }
 }

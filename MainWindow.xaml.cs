@@ -26,6 +26,7 @@ namespace PaintNight
     {
         // List<string> CharacterList = new List<string>();
         public List<string> CharacterList { get; set; } = new List<string>();
+        TimerWindow tw;
 
         public MainWindow()
         {
@@ -39,6 +40,11 @@ namespace PaintNight
 
             // Fill lstVwChar
             fillListView();
+        }
+
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            tw.Close();
         }
 
         private void fillListView()
@@ -159,7 +165,7 @@ namespace PaintNight
         private void actionExit(object sender, RoutedEventArgs e)
         {
             // TODO: YesNoCancel for saving before closing
-            // TODO: Close Timer window
+            tw.Close();
             Application.Current.Shutdown();
         }
 
@@ -315,7 +321,7 @@ namespace PaintNight
 
         private void btnTimer_Click(object sender, RoutedEventArgs e)
         {
-            TimerWindow tw = new TimerWindow();
+            tw = new TimerWindow();
             tw.Show();
         }
 
